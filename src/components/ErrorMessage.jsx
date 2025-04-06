@@ -1,17 +1,12 @@
-import React from 'react'
-import AlerTriangle from '/lucide-react';
+import React from 'react';
 
-function ErrorMessage({message}) {
-    if(!message) return null;
-
-
+const ErrorMessage = ({ message }) => {
   return (
-    <div>
-        <AlertTriangle size={20} />
-      <p>{message}</p>
+    <div className=" w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-4" role="alert">
+      <strong className="font-bold">Error: </strong>
+      <span className="block sm:inline">{message || 'Something went wrong. Please try again.'}</span>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorMessage
-
+export default ErrorMessage;

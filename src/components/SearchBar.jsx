@@ -1,30 +1,26 @@
-import { useState, useEffect} from 'react'
+import React, { useState } from 'react';
 
-const SearchBar = () => {
-    const[city, setCity] = useState("")
-
-    const handlesubmit = (e) => {
-        e.preventDefault()
-
-        let errors = ""
-
-        if(!city){
-            errors = "Please input a city"
-        }
-        console.log(submitted)
+const SearchBar = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      onSearch(query);
     }
+  };
+  
   return (
-    <div className='bg-blue-900 image-'>
-        <form action="" onChange={handlesubmit} className='p-9 '>
-            <h1 className='m-16 p-6 font-extrabold font-sans'>Weather App</h1>
-      <input className='rounded-lg border my-6 mx-6' type="text"
-      value={city}
-      name='city'
-      onChange={(e) => setCity(e.target.value)}
-      placeholder='Enter the city name.....' />
-      </form>
-    </div>
-  )
-}
+    <form onSubmit={handleSubmit} className="mb-4">
+      <input
+        type="text"
+        placeholder="Search for a city..."
+        className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+    </form>
+  );
+};
 
-export default SearchBar
+export default SearchBar;

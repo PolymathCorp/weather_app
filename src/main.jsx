@@ -1,10 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+// Check for dark mode preference
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+  (localStorage.getItem('darkMode') === null && darkModeMediaQuery.matches);
+
+// Apply dark mode if needed
+if (isDarkMode) {
+  document.documentElement.classList.add('dark');
+} else {
+  document.documentElement.classList.remove('dark');
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-)
+  </React.StrictMode>
+);
