@@ -86,7 +86,7 @@ const ForecastPage = () => {
       )}
       
       {/* Weather Details */}
-      <div className="text-blue-950 mb-4">
+      <div className="text-blue-950 mb-18">
         <h2 className="mb-2 text-white text-sm sm:text-base font-medium">weather details</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
           {forecast && forecast[0] && (
